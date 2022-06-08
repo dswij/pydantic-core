@@ -137,12 +137,16 @@ class UnionSchema(TypedDict):
     strict: NotRequired[bool]
     default: NotRequired[Any]
 
+class BytesSchema(TypedDict):
+    type: Literal['bytes']
+
 
 # pydantic allows types to be defined via a simple string instead of dict with just `type`, e.g.
 # 'int' is equivalent to {'type': 'int'}
 BareType = Literal[
     'any',
     'bool',
+    'bytes',
     'dict',
     'float',
     'function',
@@ -163,6 +167,7 @@ Schema = Union[
     BareType,
     AnySchema,
     BoolSchema,
+    BytesSchema,
     DictSchema,
     FloatSchema,
     FunctionSchema,

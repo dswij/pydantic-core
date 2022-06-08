@@ -44,4 +44,10 @@ pub trait Input: fmt::Debug + ToPy + ToLocItem {
     fn lax_set<'data>(&'data self) -> ValResult<GenericSequence<'data>> {
         self.strict_set()
     }
+
+    fn strict_bytes<'data>(&'data self) -> ValResult<Vec<u8>>;
+
+    fn lax_bytes<'data>(&'data self) -> ValResult<Vec<u8>> {
+        self.strict_bytes()
+    }
 }

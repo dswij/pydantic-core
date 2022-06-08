@@ -114,6 +114,15 @@ impl Input for JsonInput {
             _ => err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::SetType),
         }
     }
+
+    fn strict_bytes<'data>(&'data self) -> ValResult<Vec<u8>> {
+        match self {
+            JsonInput::String(s) =>  Ok(s.clone().into_bytes()),
+            JsonInput::Int(int) => Ok(int.to_ne_bytes().to_vec()),
+            JsonInput::Float(f) => Ok(f.to_ne_bytes().to_vec()),
+            _ => err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::BytesType),
+        }
+    }
 }
 
 /// Required for Dict keys so the string can behave like an Input
@@ -174,5 +183,9 @@ impl Input for String {
 
     fn strict_set<'data>(&'data self) -> ValResult<GenericSequence<'data>> {
         err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::SetType)
+    }
+
+    fn strict_bytes(&self) -> ValResult<Vec<u8>> {
+        Ok(self.clone().into_bytes())
     }
 }

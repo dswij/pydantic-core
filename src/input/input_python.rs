@@ -48,6 +48,34 @@ impl Input for PyAny {
         }
     }
 
+    fn strict_bytes(&self) -> ValResult<Vec<u8>> {
+        if let Ok(py_bytes) = self.cast_as::<PyBytes>() {
+            py_bytes.extract().map_err(as_internal)
+        } else {
+            err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::BytesType)
+        }
+    }
+
+    fn lax_bytes(&self) -> ValResult<Vec<u8>> {
+            println!("LAX_BYTES");
+        if let Ok(py_bytes) = self.cast_as::<PyBytes>() {
+            py_bytes.extract().map_err(as_internal)
+        } else if let Ok(py_str) = self.cast_as::<PyString>() {
+            Ok(py_str.to_string().into_bytes())
+        } else if self.extract::<bool>().is_ok() {
+            // do this before int and float parsing as `False` is cast to `0` and we don't want False to
+            // be returned as a string
+            err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::BytesType)
+        } else if let Ok(int) = self.extract::<i64>() {
+            Ok(int.to_ne_bytes().to_vec())
+        } else if let Ok(float) = f64::extract(self) {
+            // don't cast_as here so Decimals are covered - internally f64:extract uses PyFloat_AsDouble
+            Ok(float.to_ne_bytes().to_vec())
+        } else {
+            err_val_error!(input_value = InputValue::InputRef(self), kind = ErrorKind::BytesType)
+        }
+    }
+
     fn strict_bool(&self) -> ValResult<bool> {
         if let Ok(bool) = self.extract::<bool>() {
             Ok(bool)
