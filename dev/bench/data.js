@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1654850103483,
+  "lastUpdate": 1655097337364,
   "repoUrl": "https://github.com/dswij/pydantic-core",
   "entries": {
     "Benchmark": [
@@ -2713,6 +2713,142 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00002256269216390392",
             "extra": "mean: 37.26931036978771 usec\nrounds: 30396"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "dswijj@gmail.com",
+            "name": "dswij",
+            "username": "dswij"
+          },
+          "committer": {
+            "email": "dswijj@gmail.com",
+            "name": "dswij",
+            "username": "dswij"
+          },
+          "distinct": true,
+          "id": "3787ebf9c79e9a1105dd25b26988ca09c90861b9",
+          "message": "Finish tests",
+          "timestamp": "2022-06-13T13:12:12+08:00",
+          "tree_id": "574f05530774f044c5cbbc1ade398e028a106ac4",
+          "url": "https://github.com/dswij/pydantic-core/commit/3787ebf9c79e9a1105dd25b26988ca09c90861b9"
+        },
+        "date": 1655097336991,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "tests/test_benchmarks.py::TestBenchmarkSimpleModel::test_core_python",
+            "value": 54564.17990989568,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000033025836957804547",
+            "extra": "mean: 18.32704169019576 usec\nrounds: 68961"
+          },
+          {
+            "name": "tests/test_benchmarks.py::TestBenchmarkSimpleModel::test_core_json",
+            "value": 33671.89725688177,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000495667775511983",
+            "extra": "mean: 29.698356239656878 usec\nrounds: 42550"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_bool_core",
+            "value": 245820.85625949458,
+            "unit": "iter/sec",
+            "range": "stddev: 9.552282412583065e-7",
+            "extra": "mean: 4.068003078405907 usec\nrounds: 123442"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_small_class_core_dict",
+            "value": 1090230.4281566874,
+            "unit": "iter/sec",
+            "range": "stddev: 1.9946731728011346e-7",
+            "extra": "mean: 917.2372868829834 nsec\nrounds: 135136"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_small_class_core_model",
+            "value": 900610.9349689035,
+            "unit": "iter/sec",
+            "range": "stddev: 2.3174361742775815e-7",
+            "extra": "mean: 1.1103573820527177 usec\nrounds: 84746"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_recursive_model_core",
+            "value": 10219.56980620841,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011625005900824725",
+            "extra": "mean: 97.85147701545107 usec\nrounds: 11834"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_list_of_dict_models_core",
+            "value": 19937.23181301088,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000007000347940070273",
+            "extra": "mean: 50.157414498606975 usec\nrounds: 25906"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_list_of_ints_core_py",
+            "value": 3375.914238436011,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000037264775946453644",
+            "extra": "mean: 296.2160556730489 usec\nrounds: 4257"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_list_of_ints_core_json",
+            "value": 6651.770376891203,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002180304667533385",
+            "extra": "mean: 150.33591710773453 usec\nrounds: 8312"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_set_of_ints_core",
+            "value": 2825.7326494694403,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00004729655474957442",
+            "extra": "mean: 353.89052116723076 usec\nrounds: 3496"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_set_of_ints_core_json",
+            "value": 5264.884217836551,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000026430933406624043",
+            "extra": "mean: 189.9377001705311 usec\nrounds: 6447"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_dict_of_ints_core",
+            "value": 924.827589684599,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00013161810606563898",
+            "extra": "mean: 1.081282620840753 msec\nrounds: 1142"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_dict_of_ints_core_json",
+            "value": 1770.3202647674266,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00007758220837668318",
+            "extra": "mean: 564.8695436084688 usec\nrounds: 2167"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_many_models_core_dict",
+            "value": 1292.949225769802,
+            "unit": "iter/sec",
+            "range": "stddev: 0.001615331726977409",
+            "extra": "mean: 773.4255762476793 usec\nrounds: 2164"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_many_models_core_model",
+            "value": 894.9484010375892,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0020767982637920845",
+            "extra": "mean: 1.1173828556379515 msec\nrounds: 1614"
+          },
+          {
+            "name": "tests/test_benchmarks.py::test_list_of_optional_core",
+            "value": 31713.451654209948,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000005486804276942151",
+            "extra": "mean: 31.532360807129315 usec\nrounds: 38461"
           }
         ]
       }
